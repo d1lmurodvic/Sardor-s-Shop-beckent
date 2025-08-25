@@ -20,16 +20,20 @@ const swaggerOptions = {
     info: {
       title: "Auth API",
       version: "1.0.0",
-      description: "Authentication API documentation",
+      description: "Sardor shops beckent API documentation",
     },
     servers: [
       {
         description: "Local Server",
         url: "http://localhost:8000", 
       },
+      {
+        description: "Production Server",
+     url: "https://sardor-s-shop-beckent-2.onrender.com/"
+    }
     ],
   },
-  apis: ["./src/routes/*.js"], 
+  apis: ["./routes/*.js"], 
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
