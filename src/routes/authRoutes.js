@@ -31,6 +31,8 @@ const { register, login, allUsers } = require('../controllers/authController');
  *               password:
  *                 type: string
  *                 example: password123
+ *       security:
+ *       - bearerAuth: []   
  *     responses:
  *       201:
  *         description: User registered successfully
@@ -40,6 +42,7 @@ const { register, login, allUsers } = require('../controllers/authController');
 router.post('/register', register);
 
 /**
+ /**
  * @swagger
  * /api/auth/login:
  *   post:
@@ -61,13 +64,26 @@ router.post('/register', register);
  *               password:
  *                 type: string
  *                 example: password123
+ *     security:
+ *       - bearerAuth: []   
  *     responses:
  *       200:
  *         description: Logged in successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
  *       401:
  *         description: Invalid credentials
  */
+
 router.post('/login', login);
+
+
 
 /**
  * @swagger
