@@ -3,9 +3,11 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
+const authProducts = require("./routes/productRoutes");
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-const authProducts = require("./routes/productRoutes");
+const swaggerOptions = require("./config/swagger");
+
 
 const app = express();
 
@@ -15,44 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 dotenv.config();
 connectDB();
 
-const swaggerOptions = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Auth API",
-      version: "1.0.0",
-      description: "Sardor Shop's backend API documentation",
-    },
-    servers: [
-      {
-        description: "Render Server",
-        url: "https://sardor-s-shop-beckent-2.onrender.com",
-      },
-      {
-        description: "Local Server",
-        url: "http://localhost:8000",
-      },
-    ],
-    components: {
-      securitySchemes: {
-        bearerAuth: {
-          type: "http",
-          scheme: "bearer",
-          bearerFormat: "JWT",
-        },
-      },
-    },
-    security: [
-      {
-        bearerAuth: [],
-      },
-    ],
-  },
-  apis: ["./src/routes/*.js"],
-};
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
-
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //routesList
