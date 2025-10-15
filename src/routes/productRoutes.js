@@ -4,6 +4,7 @@ const {
   getAllProducts,
   updateProduct,
   deleteProduct,
+  likeProduct,
 } = require("../controllers/productController");
 
 const router = express.Router();
@@ -99,11 +100,13 @@ router.get("/all", getAllProducts);
  *             properties:
  *               title:
  *                 type: string
+ *                 example: Updated Apple
  *               price:
  *                 type: number
+ *                 example: 15
  *     responses:
  *       200:
- *         description: Product updated
+ *         description: Product updated successfully
  *       404:
  *         description: Product not found
  */
@@ -124,10 +127,31 @@ router.put("/edit/:id", updateProduct);
  *           type: string
  *     responses:
  *       200:
- *         description: Product deleted
+ *         description: Product deleted successfully
  *       404:
  *         description: Product not found
  */
 router.delete("/delete/:id", deleteProduct);
+
+/**
+ * @swagger
+ * /api/products/like/{id}:
+ *   post:
+ *     summary: Like a product by ID
+ *     tags: [Products]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: Product ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Product liked successfully
+ *       404:
+ *         description: Product not found
+ */
+router.post("/like/:id", likeProduct);
 
 module.exports = router;

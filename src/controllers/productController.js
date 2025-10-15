@@ -1,4 +1,5 @@
 const Product = require("../models/productModel");
+const LikeModel = require("../models/likeModel");
 
 exports.createProduct = async (req, res) => {
   try {
@@ -64,3 +65,19 @@ exports.deleteProduct = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+exports.likeProduct = async (req, res) => {
+  try {
+    const {userId} = req.body
+
+    const newLike = await LikeModel.create({
+      userId,
+    })
+
+    newLike.save()
+  
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}

@@ -9,7 +9,7 @@ const mongooseNewSchema = new mongoose.Schema({
     },
     productId: {
         type: String,
-        required: true,
+        required: false,
         ref: 'Product'
     }
 })
