@@ -69,13 +69,7 @@ exports.deleteProduct = async (req, res) => {
 
 exports.likeProduct = async (req, res) => {
   try {
-    const {userId} = req.body
 
-    const newLike = await LikeModel.create({
-      userId,
-    })
-
-    newLike.save()
   
   } catch (error) {
     res.status(500).json({ message: error.message });
