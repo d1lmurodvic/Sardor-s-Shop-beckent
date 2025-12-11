@@ -7,6 +7,7 @@ const authProducts = require("./routes/productRoutes");
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const swaggerOptions = require("./config/swagger");
+const orderRoutes = require("./routes/orderRoutes")
 
 const app = express();
 
@@ -21,6 +22,7 @@ const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/auth", authRoutes);
 app.use("/api/products", authProducts)
+app.use("/api/orders", orderRoutes);
 
 const PORT = process.env.PORT == null ? 8000 : process.env.PORT;
 

@@ -5,6 +5,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,   
   },
+  role: [
+    {
+      admin: {
+        type: String,                                                                                                       
+        required: true,                                                                                                                                                                                                                                 
+      },
+      moderator: {
+        type: String,
+        required: true,
+      }
+    }
+  ],
   lastname: {
     type: String,
     required: false,

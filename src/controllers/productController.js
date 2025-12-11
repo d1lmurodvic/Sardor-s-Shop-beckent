@@ -69,9 +69,8 @@ exports.deleteProduct = async (req, res) => {
 
 exports.likeProduct = async (req, res) => {
   try {
-
-  
-  } catch (error) {
+    
+  }catch (error) {
     res.status(500).json({ message: error.message });
   }
 }
