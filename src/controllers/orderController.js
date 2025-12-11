@@ -5,7 +5,7 @@ exports.buyProduct = async (req, res) => {
   try {
     const { productId, buyerName, quantity } = req.body;
 
-    if (!productId || !buyerName ) {
+    if (!productId || !buyerName) {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
@@ -22,6 +22,16 @@ exports.buyProduct = async (req, res) => {
       buyerName,
       quantity: qty,
       totalPrice,
+      
+      productSnapshot: {
+        title: product.title,
+        description: product.description,
+        price: product.price,
+        image: product.image,
+        status: product.status,
+        category: product.category,
+        rating: product.rating,
+      }
     });
 
     res.status(201).json({
@@ -32,6 +42,7 @@ exports.buyProduct = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 exports.getAllOrders = async (req, res) => {
   try {

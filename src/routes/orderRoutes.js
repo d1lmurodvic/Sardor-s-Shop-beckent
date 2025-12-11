@@ -17,7 +17,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /orders/buy:
+ * /api/orders/buy:
  *   post:
  *     summary: Buy a product
  *     tags: [Orders]
@@ -49,7 +49,7 @@ router.post("/buy", buyProduct);
 
 /**
  * @swagger
- * /orders/all:
+ * /api/orders/all:
  *   get:
  *     summary: Get all orders
  *     tags: [Orders]
@@ -58,7 +58,7 @@ router.get("/all", getAllOrders);
 
 /**
  * @swagger
- * /orders/{id}:
+ * /api/orders/{id}:
  *   get:
  *     summary: Get order details by ID
  *     tags: [Orders]
@@ -67,7 +67,7 @@ router.get("/:id", getOrderById);
 
 /**
  * @swagger
- * /orders/update/{id}:
+ * /api/orders/update/{id}:
  *   put:
  *     summary: Update order status
  *     tags: [Orders]

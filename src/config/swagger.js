@@ -9,7 +9,7 @@ const swaggerOptions = {
       servers: [
         {
           description: "Render Server",
-          url: "https://sardor-s-shop-beckent-4.onrender.com",
+          url: "https://sardor-s-shop-beckent-5.onrender.com",
         },
         {
           description: "Local Server",
