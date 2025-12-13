@@ -28,6 +28,6 @@ const PORT = process.env.PORT == null ? 8000 : process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on http://localhost:${PORT}`);
-  console.log(`🚀 Server is running on https://sardor-s-shop-beckent-4.onrender.com`);
+  console.log(`🚀 Server is running on https://sardor-s-shop-beckent-5.onrender.com`);
   console.log(`📄 Swagger docs available at http://localhost:${PORT}/api-docs`);
 });

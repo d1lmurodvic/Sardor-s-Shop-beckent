@@ -152,6 +152,59 @@ router.delete("/delete/:id", deleteProduct);
  *       404:
  *         description: Product not found
  */
+/**
+ * @swagger
+ * /api/products/like/{id}:
+ *   post:
+ *     summary: Like or unlike a product (toggle)
+ *     tags: [Products]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: Product ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Product unliked successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Product unliked
+ *                 likes:
+ *                   type: number
+ *                   example: 10
+ *                 liked:
+ *                   type: boolean
+ *                   example: false
+ *       201:
+ *         description: Product liked successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Product liked
+ *                 likes:
+ *                   type: number
+ *                   example: 11
+ *                 liked:
+ *                   type: boolean
+ *                   example: true
+ *       401:
+ *         description: Unauthorized (token missing or invalid)
+ *       404:
+ *         description: Product not found
+ */
 router.post("/like/:id", likeProduct);
 
 

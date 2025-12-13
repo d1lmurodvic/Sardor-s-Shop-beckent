@@ -1,17 +1,21 @@
-const mongoose = require('mongoose')
-const { ref } = require('process')
+const mongoose = require("mongoose");
 
-const mongooseNewSchema = new mongoose.Schema({
-    userId: {
-        type: String,
-        required: true,
-        ref: 'User'
+const likeSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-    productId: {
-        type: String,
-        required: false,
-        ref: 'Product'
-    }
-})
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('Like', mongooseNewSchema)
+likeSchema.index({ user: 1, product: 1 }, { unique: true });
+
+module.exports = mongoose.model("Like", likeSchema);
