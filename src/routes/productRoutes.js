@@ -4,8 +4,9 @@ const {
   getAllProducts,
   updateProduct,
   deleteProduct,
-  likeProduct,
+  getLikedProducts,
 } = require("../controllers/productController");
+const { likeProduct } = require("../controllers/likeController");
 
 const router = express.Router();
 
@@ -205,7 +206,26 @@ router.delete("/delete/:id", deleteProduct);
  *       404:
  *         description: Product not found
  */
+
 router.post("/like/:id", likeProduct);
+
+
+/**
+ * @swagger
+ * /api/products/liked:
+ *   get:
+ *     summary: Get all liked products of current user
+ *     tags: [Products]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of liked products
+ *       401:
+ *         description: Unauthorized
+ */
+router.get("/liked", getLikedProducts);
+
 
 
 module.exports = router;

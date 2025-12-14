@@ -67,10 +67,24 @@ exports.deleteProduct = async (req, res) => {
 };
 
 
-exports.likeProduct = async (req, res) => {
+
+exports.getLikedProducts = async (req, res) => {
   try {
-    
-  }catch (error) {
+    const userId = req.user.id;
+
+    const likes = await LikeModel.find({ user: userId })
+      .populate("product"); 
+
+    const likedProducts = likes.map((like) => ({
+      _id: like.product._id,
+      title: like.product.title,
+      description: like.product.description,
+      price: like.product.price,
+      image: like.product.image,
+    }));
+
+    res.status(200).json(likedProducts);
+  } catch (error) {
     res.status(500).json({ message: error.message });
   }
 }
