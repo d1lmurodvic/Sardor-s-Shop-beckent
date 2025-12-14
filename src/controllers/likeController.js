@@ -1,4 +1,5 @@
-const Product = require("../models/productModel")
+const Product = require("../models/productModel");
+const LikeModel = require("../models/likeModel"); // Add this import
 
 exports.likeProduct = async (req, res) => {
     try {
@@ -40,9 +41,7 @@ exports.likeProduct = async (req, res) => {
         liked: true,
       });
     } catch (error) {
+      console.error("Like error:", error); // Add logging for debugging
       res.status(500).json({ message: error.message });
     }
   };
-  
-
-  
