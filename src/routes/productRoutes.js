@@ -7,6 +7,7 @@ const {
   getLikedProducts,
 } = require("../controllers/productController");
 const { likeProduct } = require("../controllers/likeController");
+const { authMiddleware } = require("../middleware/auth");
 
 const router = express.Router();
 
@@ -207,7 +208,7 @@ router.delete("/delete/:id", deleteProduct);
  *         description: Product not found
  */
 
-router.post("/like/:id", likeProduct);
+router.post("/like/:id", likeProduct, authMiddleware);
 
 
 /**

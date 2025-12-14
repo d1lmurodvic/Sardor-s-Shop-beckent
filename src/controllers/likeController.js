@@ -1,3 +1,5 @@
+const Product = require("../models/productModel")
+
 exports.likeProduct = async (req, res) => {
     try {
       const productId = req.params.id;
